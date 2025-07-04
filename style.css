@@ -1,4 +1,4 @@
-
+/* General styling */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,16 +6,23 @@ body {
   color: #333;
 }
 
+/* Navbar */
 .navbar {
   background-color: #f2f2f2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 30px;
+  padding: 15px 30px;
+  flex-wrap: wrap; /* prevent overflow on small screens */
+}
+
+nav {
+  display: flex;
+  gap: 20px;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   color: #e91e63;
 }
@@ -25,60 +32,139 @@ nav a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  position: relative;
 }
 
+nav a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: #e91e63;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hero Section */
 .hero {
-  background: #ffe4ec;
+  background: linear-gradient(135deg, #ffe4ec, #fff0f5);
   text-align: center;
   padding: 60px 20px;
+  animation: fadeIn 1.5s ease-in;
 }
 
 .hero h1 {
-  font-size: 36px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: 20px;
   margin: 20px 0;
 }
 
 .hero button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 16px;
   background-color: #e91e63;
   color: white;
   border: none;
+  border-radius: 30px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+.hero button:hover {
+  background-color: #d81b60;
+}
+
+/* Products Section */
 .products {
-  padding: 40px 20px;
+  padding: 50px 20px;
   text-align: center;
 }
 
 .product-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
 .product-card {
   background-color: #fff;
   border: 1px solid #eee;
-  margin: 15px;
+  border-radius: 12px;
   padding: 20px;
-  width: 200px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card h3 {
+  margin: 15px 0 10px;
+  font-size: 18px;
+}
+
+.product-card p {
+  font-weight: bold;
+  color: #e91e63;
+}
+
+/* Reviews */
 .reviews {
-  background-color: #f9f9f9;
-  padding: 30px 20px;
+  background-color: #fef6f9;
+  padding: 40px 20px;
   text-align: center;
+  animation: fadeInUp 1s ease-in;
 }
 
+.reviews h2 {
+  margin-bottom: 20px;
+}
+
+.reviews p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+/* Footer */
 footer {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 15px 0;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
